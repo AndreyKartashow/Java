@@ -1,10 +1,8 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class HomeWork1 {
     public static void main(String[] args) {
-
+        /*
         // Вычислить сумму чисел от 1 до n; произведение чисел от 1 до n
         System.out.println("\ntask 1");
         Summ(1, 10);
@@ -20,15 +18,15 @@ public class HomeWork1 {
         System.out.println("\ntask 3");
         Calc(10, 10);
         System.out.println("___________________________________________");
-
+        */
 
 
         // Задано уравнение вида q + w = e, причем q, w, e >= 0.
         // Некоторые цифры могут быть заменены знаком вопроса, например 2? + ?5 = 69.
         // Требуется восстановить выражение до верного равенства.
         // Предложить хотя бы одно решение или сообщить, что его нет.
-        // System.out.println("\ntask 4");
-        // ResultEquation();
+        System.out.println("\ntask 4");
+        ResultEquation();
 
     }
 
@@ -101,12 +99,13 @@ public class HomeWork1 {
 
         String equateStr = String.join("", equation);
         String[] equate = equateStr.split(" ");
-        System.out.println(Arrays.toString(equate));
+
         return equate;
     }
 
     public static void ResultEquation() {
         String[] equate = ParseInputScanEquation();
+        char[] resultChars = equate[equate.length - 1].toCharArray();
 
         ArrayList<String> numberEquate = new ArrayList<String>();
         for (int i = 0; i < equate.length - 1; i++) {
@@ -117,7 +116,21 @@ public class HomeWork1 {
             }
         }
 
+        ArrayList<String> resultNumber = new ArrayList<String>();
+        for (String curentElement : numberEquate) {
+            char[] curentElementCharArray = curentElement.toCharArray();
+            for (int j = 0; j < curentElementCharArray.length; j++) {
+                if (curentElementCharArray[j] != '?') {
+                    int curentElementInt = Integer.parseInt(Character.toString(curentElementCharArray[j]));
+                    int curentResultInt = Integer.parseInt(Character.toString(resultChars[j]));
+                    resultNumber.add(0, Integer.toString(curentResultInt - curentElementInt));
+                }
+            }
+        }
+        System.out.println(resultNumber);
+
     }
 }
 
 // 1?+?5=25
+// ?1+3?=55
