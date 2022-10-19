@@ -30,7 +30,7 @@ public class HomeWork1 {
 
     }
 
-    public  static void Summ(int numStart, int numEnd) {
+    public static void Summ(int numStart, int numEnd) {
         int sum = 0;
         for (int i = numStart; i <= numEnd; i++) {
             sum += i;
@@ -38,7 +38,7 @@ public class HomeWork1 {
         System.out.println(sum);
     }
 
-    public  static void Fact(int start, int end) {
+    public static void Fact(int start, int end) {
         int fact = 1;
         for (int i = start; i <= end; i++) {
             fact *= i;
@@ -46,7 +46,7 @@ public class HomeWork1 {
         System.out.println(fact);
     }
 
-    public  static void SimplNum(int startNum, int endNum) {
+    public static void SimplNum(int startNum, int endNum) {
         if (startNum == 1) {
             System.out.print(startNum + " ");
             System.out.print(startNum + 2 + " ");
@@ -70,7 +70,7 @@ public class HomeWork1 {
         }
     }
 
-    public  static void Calc(int num1, int num2) {
+    public static void Calc(int num1, int num2) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("""
                 введите 1 - для умножения
@@ -110,8 +110,7 @@ public class HomeWork1 {
         ArrayList<String> numberEquate = new ArrayList<String>();
         for (int i = 0; i < equate.length - 1; i++) {
             if (equate[i].equals("+") | equate[i].equals("-") | equate[i].equals("=")) {
-            }
-            else {
+            } else {
                 numberEquate.add(equate[i]);
             }
         }
