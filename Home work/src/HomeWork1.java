@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class HomeWork1 {
