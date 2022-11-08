@@ -1,11 +1,12 @@
-import java.lang.reflect.Array;
+import java.io.IOException;
 import java.util.*;
+import java.util.logging.FileHandler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class HomeWork3 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         /*
         Задание 1.
         Реализовать алгоритм сортировки слиянием.
@@ -102,4 +103,5 @@ public class HomeWork3 {
             }
         }
     }
+
 }
