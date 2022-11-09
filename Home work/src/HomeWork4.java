@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.logging.Logger;
 
 
@@ -32,12 +30,21 @@ public class HomeWork4 {
 
         System.out.println(list2.first());
 
+        //Задание 3*.
+        //В калькулятор добавьте возможность отменить последнюю операцию
+        //Вместо этого переделал калькулятор на расчет простого выражения (без приоритета по скобкам)
+
+        Calc calc = new Calc("2+2*1+2*3+4/2-1");
+        System.out.println(calc.equete);
+        calc.calculation();
+        System.out.println(calc.result);
+
     }
 
 }
 
 class Task1<T> {
-    private LinkedList<T> list;
+    private final LinkedList<T> list;
 
     @SafeVarargs
     Task1(T... n) {
@@ -65,7 +72,7 @@ class Task1<T> {
 }
 
 class Task2<T> {
-    private LinkedList<T> myQueue;
+    private final LinkedList<T> myQueue;
 
     @SafeVarargs
     Task2(T... n) {
@@ -107,5 +114,66 @@ class Task2<T> {
 }
 
 class Calc {
+    private ArrayList<String> equalList;
+    public double result;
+    public String equete;
 
+    Calc(String equals) {
+        Logger logger = Logger.getAnonymousLogger();
+        this.equete = equals;
+        logger.info("Инициализировано выражение в классе Calc");
+        this.equalList = new ArrayList<>(Arrays.stream(equals.replaceAll("[*]", " * ")
+                        .replaceAll("[/]", " / ")
+                        .replaceAll("[-]", " - ")
+                        .replaceAll("[+]", " + ")
+                        .split(" "))
+                        .toList());
+    }
+
+    private void removAfterSingleOperation(int i) {
+        equalList.remove(i + 1);
+        equalList.remove(i - 1);
+    }
+
+    private void singleOperation(String operation) {
+        int len = equalList.size();
+        int i = 0;
+
+        while (i < len & len != 1) {
+            if (equalList.get(i).equals(operation) & operation.equals("/")) {
+                equalList.set(i, Double.toString(Double.parseDouble(equalList.get(i - 1)) / Double.parseDouble(equalList.get(i + 1))));
+                removAfterSingleOperation(i);
+                len -= 2;
+                i--;
+            } else if (equalList.get(i).equals(operation) & operation.equals("*")) {
+                equalList.set(i, Double.toString(Double.parseDouble(equalList.get(i - 1)) * Double.parseDouble(equalList.get(i + 1))));
+                removAfterSingleOperation(i);
+                len -= 2;
+                i--;
+            } else if (equalList.get(i).equals(operation) & operation.equals("-")) {
+                equalList.set(i, Double.toString(Double.parseDouble(equalList.get(i - 1)) - Double.parseDouble(equalList.get(i + 1))));
+                removAfterSingleOperation(i);
+                len -= 2;
+                i--;
+            } else if (equalList.get(i).equals(operation) & operation.equals("+")) {
+                equalList.set(i, Double.toString(Double.parseDouble(equalList.get(i - 1)) + Double.parseDouble(equalList.get(i + 1))));
+                removAfterSingleOperation(i);
+                len -= 2;
+                i--;
+            }
+
+            i++;
+        }
+    }
+
+    public void calculation() {
+        Logger logger = Logger.getAnonymousLogger();
+        logger.info("Получен запрос на получение результата выражения класса Calc");
+        singleOperation("/");
+        singleOperation("*");
+        singleOperation("-");
+        singleOperation("+");
+        result = Double.parseDouble(equalList.get(0));
+
+    }
 }
