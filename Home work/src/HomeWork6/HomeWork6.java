@@ -1,3 +1,5 @@
+package HomeWork6;
+
 import java.util.*;
 
 public class HomeWork6 {
@@ -28,7 +30,7 @@ class Notebook {
 
     @Override
     public String toString() {
-        return "Notebook{" +
+        return "HomeWork6.Notebook{" +
                 "manufacturer='" + manufacturer + '\'' +
                 ", model='" + model + '\'' +
                 ", RAM=" + ram +

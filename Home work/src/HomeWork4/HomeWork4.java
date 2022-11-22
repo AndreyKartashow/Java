@@ -1,3 +1,5 @@
+package HomeWork4;
+
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -151,7 +153,7 @@ class Calc {
     Calc(String equals) {
         Logger logger = Logger.getAnonymousLogger();
         this.equete = equals;
-        logger.info("Инициализировано выражение в классе Calc");
+        logger.info("Инициализировано выражение в классе HomeWork4.Calc");
         this.equalList = new ArrayList<>(Arrays.stream(equals
                         .replaceAll("[*]", " * ")
                         .replaceAll("[/]", " / ")
@@ -217,7 +219,7 @@ class Calc {
      */
     public double calculation() {
         Logger logger = Logger.getAnonymousLogger();
-        logger.info("Получен запрос на получение результата выражения класса Calc");
+        logger.info("Получен запрос на получение результата выражения класса HomeWork4.Calc");
 
         String[] operatorArray = {"/", "*", "-", "+"};
 

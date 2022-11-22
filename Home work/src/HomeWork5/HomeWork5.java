@@ -1,3 +1,5 @@
+package HomeWork5;
+
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -33,14 +35,14 @@ public class HomeWork5 {
         workers.printSortedListWorkers();
 
         //Задание 3.
-        //Реализовать алгоритм пирамидальной сортировки (HeapSort).
+        //Реализовать алгоритм пирамидальной сортировки (HomeWork5.HeapSort).
         QueensChess queensChess = new QueensChess(8);
         MyThread tr = new MyThread(queensChess, 0);
         tr.run();
 
 
         //Задание 3.
-        //Реализовать алгоритм пирамидальной сортировки (HeapSort).
+        //Реализовать алгоритм пирамидальной сортировки (HomeWork5.HeapSort).
         int[] sortArr = {12, 6, 4, 1, 15, 10};
 
         HeapSort.heapSort(sortArr);

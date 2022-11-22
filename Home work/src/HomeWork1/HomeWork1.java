@@ -1,3 +1,5 @@
+package HomeWork1;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Logger;
