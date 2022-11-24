@@ -15,8 +15,7 @@ public class HotDrink extends Drink {
      * @param temperature температура напитка, тип <b>int</b>
      */
     public HotDrink(String name, double volume, int temperature) {
-        this.name = name;
-        this.volume = volume;
+        super(name, volume);
         this.temperature = temperature;
     }
 
