@@ -4,12 +4,10 @@ import HomeWork8.controller.servise.StudentGroupServes;
 import HomeWork8.view.UserInterface;
 
 public class Controller {
-    /**
-     * Метод организует логику пользовательского меню в автомате горячих напитков
-     * @param machine Принимает инициализированный и заполненный напитками автомат горячих напитков
-     */
     public static void runServer() {
         StudentGroupServes serves = new StudentGroupServes();
+        serves.studentFileRead();
+        serves.teacherFileRead();
 
         System.out.println();
         System.out.println("Добро пожаловать в журнал студенческой группы!");

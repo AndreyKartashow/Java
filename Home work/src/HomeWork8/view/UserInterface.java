@@ -15,10 +15,6 @@ public class UserInterface {
         System.out.println();
     }
 
-    /**
-     * Метод позволяет выбрать действие в пользовательском меню автомата
-     * @return Возвращает выбранное действие
-     */
     public static String chooseAction() {
         Scanner scanner = new Scanner(System.in);
         String operation = "";

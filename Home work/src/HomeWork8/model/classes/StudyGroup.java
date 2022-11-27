@@ -1,5 +1,6 @@
 package HomeWork8.model.classes;
 
+import HomeWork8.model.classes.Human;
 
 import java.util.ArrayList;
 import java.util.List;

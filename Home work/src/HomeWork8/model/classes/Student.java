@@ -1,5 +1,7 @@
 package HomeWork8.model.classes;
 
+import HomeWork8.model.classes.Human;
+
 public class Student extends Human {
     private String numberGroup;
     private static int code = 100000;
@@ -14,14 +16,13 @@ public class Student extends Human {
         return numberGroup;
     }
 
-
     @Override
     public String toString() {
         return "Студент:" +
-                " Фамилия = " + super.getLastName() +
-                ", Имя = " + super.getFirstName() +
-                ", Отчество = " + super.getMidlName() +
-                ", Номер учебной группы = " + numberGroup;
+                " " + super.getLastName() +
+                " " + super.getFirstName() +
+                " " + super.getMidlName() +
+                " " + numberGroup;
     }
 
 }
