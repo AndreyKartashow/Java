@@ -1,11 +1,10 @@
 package HomeWork8.model.classes;
 
-import HomeWork8.model.classes.Human;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudyGroup <T extends Human>{
+public class StudyGroup<T extends Human> {
     private List<T> listTeacher;
     private List<T> listStudent;
     private List<T> listStudentGroup;
@@ -16,8 +15,11 @@ public class StudyGroup <T extends Human>{
         this.listStudentGroup = new ArrayList<>();
     }
 
+    public StudyGroup() {
+    }
+
     @SafeVarargs
-    public StudyGroup(T teacher, T...students) {
+    public StudyGroup(T teacher, T... students) {
         this.listTeacher.add(teacher);
 
         this.listStudent.addAll(List.of(students));

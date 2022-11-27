@@ -1,13 +1,13 @@
 package HomeWork8.model.classes;
 
-import HomeWork8.model.classes.Human;
-
 public class Teacher extends Human {
     private String discipline;
+    private static int code = 100;
 
     public Teacher(String firstName, String midlName, String lastName, String discipline) {
         super(firstName, midlName, lastName);
         this.discipline = discipline;
+        super.setId(code++);
     }
 
 
@@ -15,17 +15,15 @@ public class Teacher extends Human {
         return discipline;
     }
 
+
+
     public void setDiscipline(String discipline) {
         this.discipline = discipline;
     }
 
     @Override
     public String toString() {
-        return "Teacher{" +
-                "lastName='" + super.getLastName() + '\'' +
-                "firstName='" + super.getFirstName() + '\'' +
-                "midlName='" + super.getMidlName() + '\'' +
-                "discipline='" + discipline + '\'' +
-                '}';
+        return "Преподаватель:" + " Фамилия = " + super.getLastName() + " Имя = " + super.getFirstName() + " Отчество = " + super.getMidlName() + " Дисциплина = " + discipline;
     }
+
 }
