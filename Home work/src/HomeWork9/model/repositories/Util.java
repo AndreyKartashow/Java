@@ -1,11 +1,14 @@
-package HomeWork8.controller.repositories;
+package HomeWork9.model.repositories;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Util {
-    public static void writ(String nameFile, String text, boolean append) {
+    public static void write(String nameFile, String text, boolean append) {
         try (FileWriter writer = new FileWriter(nameFile, append)) {
             writer.write(text);
             writer.append('\n');
