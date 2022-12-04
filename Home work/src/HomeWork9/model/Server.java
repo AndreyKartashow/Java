@@ -25,18 +25,10 @@ public class Server {
             String action = userInterface.chooseAction();
 
             switch (action) {
-                case "1" :
-                    noteService.printAllNote(listNotes.getListNotes());
-                    break;
-                case "2" :
-                    noteService.addNewNote(listNotes.getListNotes(), controller.inputDataCreatNotes());
-                    break;
-                case "3" :
-                    noteService.removeNote(listNotes.getListNotes(), controller.inputIdForRemoveNote());
-                    break;
-                case "4" :
-                    terminalActive = false;
-                    break;
+                case "1" -> noteService.printAllNote(listNotes.getListNotes());
+                case "2" -> noteService.addNewNote(listNotes.getListNotes(), controller.inputDataCreatNotes());
+                case "3" -> noteService.removeNote(listNotes.getListNotes(), controller.inputIdForRemoveNote());
+                case "4" -> terminalActive = false;
             }
         }
     }
