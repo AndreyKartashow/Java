@@ -8,7 +8,8 @@ import java.util.List;
 public class WorkerList {
     protected ArrayList<Person> workerList;
 
-    WorkerList(Person ...person) {
+    public WorkerList() {}
+    public WorkerList(Person ...person) {
         this.workerList.addAll(List.of(person));
     }
 }

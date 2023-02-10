@@ -2,7 +2,7 @@ package HomeWork9.vueController.controller;
 
 import java.util.Scanner;
 
-public class Controller {
+public class Control {
     public String inputDataCreatNotes() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите стутус заметки");

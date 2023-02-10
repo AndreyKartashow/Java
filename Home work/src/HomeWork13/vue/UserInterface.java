@@ -1,7 +1,6 @@
 package HomeWork13.vue;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 public class UserInterface {
     public void userMenu() {
@@ -15,15 +14,12 @@ public class UserInterface {
         System.out.println();
     }
 
-    public String chooseAction() {
+    public String inputForm() {
         Scanner scanner = new Scanner(System.in);
-        String operation = "";
-        while (!(operation.equals("1") | operation.equals("2") | operation.equals("3") | operation.equals("4") | operation.equals("5"))) {
-            System.out.println("Введите цифру с соответствующей операцией и подтвердите действие");
-            operation = scanner.next();
-        }
-        Logger logger = Logger.getAnonymousLogger();
-        logger.info("Code menu: " + operation);
-        return operation;
+        System.out.println("Введите данные в одну строку через пробел в формате:");
+        System.out.println("<Фамилия> <Имя> <Отчество> <Дата Рождения(dd.mm.yyyy)> <Пол(f/m)> <Номер Телефона>");
+        String form = scanner.nextLine();
+        return form;
     }
+
 }

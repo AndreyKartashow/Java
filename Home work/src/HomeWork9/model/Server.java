@@ -2,7 +2,7 @@ package HomeWork9.model;
 
 import HomeWork9.model.data.Notes;
 import HomeWork9.model.sevice.NoteServiceImpl;
-import HomeWork9.vueController.controller.Controller;
+import HomeWork9.vueController.controller.Control;
 import HomeWork9.vueController.vue.UserInterface;
 
 public class Server {
@@ -12,7 +12,7 @@ public class Server {
         NoteServiceImpl noteService = new NoteServiceImpl();
         noteService.FileRead(listNotes.getListNotes());
 
-        Controller controller = new Controller();
+        Control controller = new Control();
 
         UserInterface userInterface = new UserInterface();
 
