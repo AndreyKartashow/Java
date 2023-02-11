@@ -1,48 +1,66 @@
 package HomeWork13.model;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class OptionWorkerList implements IOptionWorkerList {
     Logger logger = Logger.getAnonymousLogger();
+    OptionPerson optionPerson = new OptionPerson();
 
     @Override
-    public void printAllWorkers(WorkerList listWorker) {
-        OptionPerson optionPerson = new OptionPerson();
-        for (Person person : listWorker.workerList){
-            System.out.println(optionPerson.getInfo(person));
+    public String allWorkers(WorkerList listWorker) {
+        StringBuilder sbWorker = new StringBuilder();
+
+        if (listWorker.list != null) {
+            for (Person person : listWorker.list){
+                sbWorker.append(optionPerson.getInfo(person) + "\n");
+            }
         }
+
+        if (listWorker.list.isEmpty() | listWorker.list == null) {
+            logger.info("Список сотрудников пуст");
+            return "Лист сотрудников пуст";
+        }
+        logger.info("Список сотрудников сформирован");
+        return sbWorker.toString();
     }
 
     @Override
     public Person addWorker(Person worker, WorkerList listWorker) {
-        listWorker.workerList.add(worker);
-        logger.info("Person adding");
+        listWorker.list.add(worker);
+        logger.info("Сотрудник добавлен");
         return worker;
     }
 
     @Override
-    public void removeWorker(Integer id, WorkerList listWorker) {
-        for (Person person : listWorker.workerList){
+    public String removeWorker(Integer id, WorkerList listWorker) {
+        String resultAction = "";
+        for (Person person : listWorker.list){
             if (id == person.id) {
-                listWorker.workerList.remove(person);
-                logger.info("Worker remove");
+                resultAction = optionPerson.getInfo(person);
+                listWorker.list.remove(person);
+                logger.info("Сотрудник удален");
+
+                return resultAction;
             } else {
-                logger.info("ID for worker is not of list");
+                logger.info("Введеное ID отсутствует в списке");
             }
         }
+        return "Введеное ID отсутствует в списке";
     }
 
     @Override
-    public Person searchWorker(String name, WorkerList listWorker) {
-        OptionPerson optionPerson = new OptionPerson();
-        for (Person person : listWorker.workerList){
+    public String searchWorker(String name, WorkerList listWorker) {
+        StringBuilder workerFoundList = new StringBuilder();
+        for (Person person : listWorker.list){
             if (name.equals(person.midlName) | name.equals(person.firstName) | name.equals(person.lastName)) {
-                System.out.println(optionPerson.getInfo(person));
-                logger.info("Worker found");
-            } else {
-                logger.info("Worker not found");
+                workerFoundList.append(optionPerson.getInfo(person) + "\n");
             }
         }
-        return null;
+        if (workerFoundList.isEmpty()) {
+            logger.info("Совпадения не найдены");
+            return "Совпадения не найдены";
+        }
+        return workerFoundList.toString();
     }
 }

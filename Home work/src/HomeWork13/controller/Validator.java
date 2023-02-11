@@ -5,7 +5,15 @@ import java.util.logging.Logger;
 public class Validator {
     Logger logger = Logger.getAnonymousLogger();
 
-    public boolean isValidLength(String formText) {
+    public boolean isValidForm(String formText) {
+        return isValidLength(formText) &&
+                isValidName(formText) &&
+                isValidDate(formText) &&
+                isValidGender(formText) &&
+                isValidNumber(formText);
+    }
+
+    private boolean isValidLength(String formText) {
         try {
             if (formText.split(" ").length > 6) {
                 System.out.println("Вы ввели лишние данный");
@@ -16,6 +24,7 @@ public class Validator {
             }
         } catch (RuntimeException e) {
             logger.info("Форма не корректна. Количество элементов в отправленной форме не соответствует стандарту");
+            return false;
         }
         return true;
     }
@@ -24,17 +33,21 @@ public class Validator {
         try {
             String[] data = formText.split(" ");
 
-            if (!(data[0].matches("[А-Яа-я]+") & data[1].matches("[А-Яа-я]+") & data[2].matches("[А-Яа-я]+"))) {
-                System.out.println("ФИО содержит недопустимые символы");
-                throw new RuntimeException();
+            for (int i = 0; i < 3; i++) {
+                if (!data[i].matches("[А-Яа-я]+") ) {
+                    System.out.println("ФИО содержит недопустимые символы");
+                    throw new RuntimeException();
+                }
             }
+
         } catch (RuntimeException e) {
             logger.info("Форма не корректна. Присутствуют недопустимые символы при вводе ФИО");
+            return false;
         }
         return true;
     }
 
-    public boolean isValidDate(String formText) {
+    private boolean isValidDate(String formText) {
         try {
             String[] data = formText.split(" ");
 
@@ -44,15 +57,16 @@ public class Validator {
             }
         } catch (RuntimeException e) {
             logger.info("Форма не корректна. Ошибка при вводе даты рождения");
+            return false;
         }
         return true;
     }
 
-    public boolean isValidGender(String formText) {
+    private boolean isValidGender(String formText) {
         try {
             String[] data = formText.split(" ");
 
-            if (!data[4].equals("f") | !(data[4].equals("m"))) {
+            if (!(data[4].equals("f") | (data[4].equals("m")))) {
                 System.out.println("Пол не соответствует символу f/m");
                 throw new RuntimeException();
             }
@@ -62,17 +76,23 @@ public class Validator {
         return true;
     }
 
-    public boolean isValidPhone(String formText) {
+    public boolean isValidNumber(String formText) {
         try {
             String[] data = formText.split(" ");
-
-            if (!data[5].matches("[0-9]")) {
-                System.out.println("Номер телефона содержит недопустимые символы");
-                throw new RuntimeException();
+            for (char c : data[5].toCharArray())
+            {
+                if (!Character.isDigit(c)) {
+                    System.out.println("Введенные данные должны состоять только из цифр");
+                    throw new RuntimeException();
+                }
             }
+
         } catch (RuntimeException e) {
-            logger.info("Форма не корректна. Присутствуют недопустимые символы при вводе номера телефона");
+            logger.info("Форма не корректна. Присутствуют недопустимые символы при вводе числового значения");
+            return false;
         }
         return true;
     }
 }
+
+

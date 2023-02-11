@@ -1,15 +1,13 @@
 package HomeWork13.model;
 
-import HomeWork13.model.Person;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class WorkerList {
-    protected ArrayList<Person> workerList;
+    public ArrayList<Person> list;
 
-    public WorkerList() {}
-    public WorkerList(Person ...person) {
-        this.workerList.addAll(List.of(person));
+    public WorkerList() {
+        this.list = new ArrayList<>();
     }
+
 }
